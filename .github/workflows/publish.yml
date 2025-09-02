@@ -1,0 +1,58 @@
+name: Build & Test npm package (ARM)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: ['20'] # must be a list, even for one value
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup QEMU for ARM emulation
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: arm64
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (if applicable)
+        run: npm run build
+
+      - name: Run tests
+        run: npm test
+
+      - name: Lint (optional)
+        run: npm run lint
+
+      - name: Create npm package tarball
+        run: npm pack
+
+      - name: Setup npm for publishing
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org'
+      
+      - name: Publish to npm
+        if: startsWith(github.ref, 'refs/tags/')
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -68,7 +68,7 @@ If you like this project, please check their [website](https://character.ai/).
 ## Installation
 
 ```bash
-npm install node_characterai@beta
+npm install node_characterai-arm-fix
 ```
 ***Note: This is temporary until the stable version is out.***
 
@@ -79,12 +79,12 @@ npm install node_characterai@beta
 
 Typescript (Recommended):
 ```typescript
-import { CharacterAI } from "node_characterai";
+import { CharacterAI } from "node_characterai-arm-fix";
 ```
 
 Javascript (CommonJS):
 ```javascript
-const { CharacterAI } = require("node_characterai");
+const { CharacterAI } = require("node_characterai-arm-fix");
 ```
 
 ## Using an Access Token
@@ -168,7 +168,7 @@ Talking to characters is an integral part of `character.ai`.
 
 ### Basic usage
 
-Chatting with `node_characterai` is pretty straightforward and is inspired by how you would actually do it on the app or the website.
+Chatting with `node_characterai-arm-fix` is pretty straightforward and is inspired by how you would actually do it on the app or the website.
 
 ```typescript
 // get your character
@@ -278,7 +278,7 @@ await message.getTTSUrlWithQuery("voice name");
 > [!WARNING]
 > This feature is currently broken due to some dependency issues. I am working to get them solved, please do not use it yet. [Click here to get more details.](https://github.com/realcoloride/node_characterai/issues/180#issuecomment-2537500480)
 
-Calling characters is a pretty awesome feature Character.AI incorporates. Luckily, `node_characterai` also has support for calling characters at your ease with flexibility in mind.
+Calling characters is a pretty awesome feature Character.AI incorporates. Luckily, `node_characterai-arm-fix` also has support for calling characters at your ease with flexibility in mind.
 
 ### Finding voices, or setting a default one
 
