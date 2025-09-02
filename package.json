@@ -1,10 +1,12 @@
 {
-  "name": "node_characterai",
-  "version": "1.2.9",
-  "description": "Unofficial Character AI wrapper for node.",
-  "main": "index.js",
+  "name": "node_characterai-arm-fix",
+  "version": "2.0.2",
+  "description": "Fixed for ARM/RPi - Unofficial Character AI wrapper for node.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -14,7 +16,6 @@
     "character",
     "ai",
     "api",
-    "ai",
     "node",
     "characterai",
     "js",
@@ -25,15 +26,21 @@
   "bugs": {
     "url": "https://github.com/realcoloride/node_characterai/issues"
   },
-  "dependencies": {
-    "jimp": "^0.22.8",
-    "json-bigint": "^1.0.0",
-    "node_characterai": "^1.2.7",
-    "node-fetch": "^3.3.0",
-    "puppeteer": "^19.11.1",
-    "puppeteer-extra": "^3.3.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2",
-    "uuid": "^9.0.0"
+  "homepage": "https://github.com/realcoloride/node_characterai#readme",
+  "devDependencies": {
+    "@types/node": "^20.17.10",
+    "@types/ws": "^8.5.12",
+    "typescript": "^5.8.3"
   },
-  "homepage": "https://github.com/realcoloride/node_characterai#readme"
+  "dependencies": {
+    "@livekit/rtc-node": "^0.12.1",
+    "@types/json-bigint": "^1.0.4",
+    "@types/uuid": "^10.0.0",
+    "json-bigint": "^1.0.0",
+    "naudiodon-arm-rpi": "^2.4.0",
+    "sharp": "^0.33.5",
+    "uuid": "^11.0.3",
+    "ws": "^8.18.0"
+  },
+  "files": ["dist"]
 }
